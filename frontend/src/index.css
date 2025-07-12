@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f8fafc;
+  }
+  
+  code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  }
+}
+
+/* Custom components */
+@layer components {
+  .btn-primary {
+    @apply bg-mental-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-mental-primary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-mental-primary/50;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-mental-primary border border-mental-primary px-4 py-2 rounded-lg font-medium hover:bg-mental-primary/5 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-mental-primary/50;
+  }
+  
+  .btn-danger {
+    @apply bg-mental-danger text-white px-4 py-2 rounded-lg font-medium hover:bg-mental-danger/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-mental-danger/50;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-mental-primary/50 focus:border-mental-primary transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md border border-gray-200 p-6;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-lg transition-shadow duration-200;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-mental-primary to-mental-secondary bg-clip-text text-transparent;
+  }
+  
+  .chat-bubble-user {
+    @apply bg-mental-primary text-white rounded-lg px-4 py-2 max-w-xs ml-auto;
+  }
+  
+  .chat-bubble-ai {
+    @apply bg-white text-gray-800 rounded-lg px-4 py-2 max-w-xs mr-auto border border-gray-200;
+  }
+  
+  .chat-bubble-crisis {
+    @apply bg-red-50 text-red-800 rounded-lg px-4 py-2 max-w-md mr-auto border border-red-200;
+  }
+  
+  .mood-emoji {
+    @apply text-4xl cursor-pointer hover:scale-110 transition-transform duration-200 p-2 rounded-full hover:bg-gray-100;
+  }
+  
+  .mood-emoji.selected {
+    @apply bg-mental-primary/10 scale-110;
+  }
+  
+  .community-post {
+    @apply bg-white rounded-lg p-4 border border-gray-200 hover:border-mental-primary/50 transition-colors duration-200;
+  }
+  
+  .loading-spinner {
+    @apply inline-block w-4 h-4 border-2 border-gray-300 border-t-mental-primary rounded-full animate-spin;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s infinite;
+  }
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar for chat */
+.chat-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 10px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover {
+  background: #4f46e5;
+}
+
+/* Privacy-focused styles */
+.privacy-first {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.privacy-first input,
+.privacy-first textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* Responsive design helpers */
+@media (max-width: 640px) {
+  .mobile-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .mobile-text {
+    font-size: 0.875rem;
+  }
+}
+
+/* Accessibility improvements */
+.focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 2px;
+  }
+  
+  .btn-primary {
+    border: 2px solid #4f46e5;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
